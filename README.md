@@ -1,1 +1,1 @@
-# Learning GoLang by Solving common programming interview questions 
+Learning GoLang by Solving common programming interview questions 
