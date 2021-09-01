@@ -45,7 +45,7 @@ func lengthOfLongestSubstring(s string) int {
 // Use a hashset to store characters in current window.
 // slide window to the right 
 // if character in hashset, contract the windows from the left 
-// O(n) for time complexity 
+// O(2*n) for time complexity 
 // O(min(m,n)) for space needed 
 func lengthOfLongestSubstring(s string) int {
     
@@ -71,4 +71,22 @@ func lengthOfLongestSubstring(s string) int {
     
     return res
         
+}
+
+// Optimized sliding window use map of string -> index 
+func lengthOfLongestSubstring(s string) int {
+    n := len(s)
+    ans := 0 
+    m := make(map[string]int)
+    i := 0
+    for j:=0; j < n; j++ {
+        c := s[j:j+1]
+        _, found := m[c]
+        if (found) {
+            i = max(i, m[c])
+        }
+        ans = max(ans, j - i + 1)
+        m[c] = j + 1
+    }
+    return ans
 }
