@@ -1,10 +1,11 @@
 /**
 * https://leetcode.com/problems/binary-search/
-* Given sorted array, choose a pivot as middle element 
-* if pivot smaller than the target, search for right half and reset pivot  
-* if pivot larger than the target, search for left half and reset pivot  
-* stop when found or no longer able to split into 2 parts 
-* return -1 if not found
+* https://leetcode.com/problems/search-insert-position/
+* Given sorted array, choose a pivot as middle element, use two pointer (l, r) for left most and right most position
+* if pivot smaller than the target, search for the right half and reset pivot, left pointer 
+* if pivot larger than the target, search for the left half and reset pivot , right pointer 
+* stop when found or no longer able to split into 2 parts (left pointer > right pointer) 
+* return -1 if not found or left pointer as insert position where it would be if it were inserted into order 
 * O(log(n) for time complexity 
 */
 func search(nums []int, target int) int {
@@ -22,7 +23,7 @@ func search(nums []int, target int) int {
             r = pivot - 1 
         }
     }
-    return -1 
+    return -1  // return l
 }
 
 
