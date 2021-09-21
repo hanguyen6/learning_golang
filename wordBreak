@@ -1,0 +1,54 @@
+// https://leetcode.com/problems/word-break/
+
+func foundStr(s string, wordDict []string) bool {
+    i := 0
+    for i < len(wordDict) {
+        if (s == wordDict[i]) {
+            return true
+        }
+        i++
+    }
+    return false
+}
+
+func foundInt(num int, list []int) bool {
+    i := 0
+    for i < len(list) {
+        if (num == list[i]) {
+            return true
+        }
+        i++
+    }
+    return false
+}
+
+func wordBreak(s string, wordDict []string) bool {
+    
+     // Create a queue to store index of string 
+    q := make([]int, 0)
+    q = append(q, 0)
+    visited := make([]int, 0)
+    
+    // Perform breadth-first search through the indices of string 
+    for (len(q) > 0) {
+        start := q[0]
+        q = q[1:]
+        if (foundInt(start, visited)) {
+            continue
+        }
+        end := start + 1
+        for end < len(s) + 1 {
+            if (foundStr(s[start:end], wordDict)) {
+                q = append(q, end)
+                if (end == len(s)) {
+                    return true 
+                }
+            }
+            visited = append(visited, start)
+            end++
+        }
+    }
+    return false 
+    
+    
+}
